@@ -30,10 +30,6 @@ Pastikan komputer Anda sudah terinstal:
 *   Node.js v22.13.0 atau versi di atasnya.
 *   npm v10.5.2 atau versi di atasnya.
 ### 2. Clone Project
-```bash
-git clone https://github.com/acaaa8/blockchain-project2-team-aisya.git
-cd blockchain-project2-team-aisya
-```
 ### 3. Instalasi Dependensi
 ```
 npm install --legacy-peer-deps
