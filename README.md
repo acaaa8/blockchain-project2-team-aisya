@@ -8,8 +8,8 @@ Sistem ini memastikan bahwa setiap pemilih hanya dapat memberikan satu suara sec
 | Name                          | NRP                              | Role        |
 |-------------------------------|-----------------------------------|------------|
 | Fadlillah Cantika Sari Hermawan     | 5027231042             | Orang Pertama-Smart Contract Developer |
-|   |    | Orang Kedua-QA / Unit Tester |
-|           |                   |  Orang Ketiga-Deployment & Dokumentasi  |
+|   Callista Meyra Azizah |   5027231060 | Orang Kedua-QA / Unit Tester |
+|      Aisyah Rahmasari      |   5027231072                |  Orang Ketiga-Deployment & Dokumentasi  |
 
 
 ## Fitur Smart Contract
