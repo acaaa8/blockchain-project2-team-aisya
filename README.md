@@ -24,6 +24,17 @@ Sistem ini memastikan bahwa setiap pemilih hanya dapat memberikan satu suara sec
 *   **Voting Deadline (Batas Waktu Otomatis):** Voting otomatis tertutup secara sistem sistemis jika waktu blockchain (`block.timestamp`) telah melewati batas waktu yang ditentukan.
 *   **Fungsi Sisa Waktu:** Menyediakan fungsi eksternal (`getRemainingTime`) untuk memeriksa sisa durasi pemilihan secara transparan.
 
+## Spesifikasi Teknis Smart Contract (`Voting.sol`)
+Kontrak ini telah dirancang untuk memenuhi seluruh persyaratan minimum tugas:
+
+| Komponen Teknis | Batas Minimum Tugas | Implementasi di `Voting.sol` | Status |
+| :--- | :--- | :--- | :--- |
+| **State Variables** | Minimal 3 | 4: `owner`, `candidatesCount`, `votingActive`, `votingDeadline` | **Terpenuhi** |
+| **Mappings** | Minimal 1 | 2: `candidates` (ID ke data) dan `hasVoted` (status pemilih) | **Terpenuhi** |
+| **Modifiers** | Minimal 1 | 2: `onlyOwner` (hak akses) dan `isVotingActive` (penjaga waktu) | **Terpenuhi** |
+| **Events** | Minimal 2 | 3: `CandidateAdded`, `Voted`, `VotingClosed` | **Terpenuhi** |
+| **Functions** | Minimal 4 | 5: `addCandidate`, `vote`, `closeVoting`, `getCandidate`, `getRemainingTime` | **Terpenuhi** |
+
 ## Panduan Cara Menjalankan Proyek
 ### 1. Prasyarat Sistem (Prerequisites)
 Pastikan komputer Anda sudah terinstal:
