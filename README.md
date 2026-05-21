@@ -11,3 +11,9 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.js
 ```
+
+| Role                          | Name                              | NRP        |
+|-------------------------------|-----------------------------------|------------|
+| Backend & Core Blockchain     | Callista Meyra Azizah             | 5027231060 |
+| Security & Digital Signature  | Fadlillah Cantika Sari Hermawan   | 5027231042 |
+| Networking & Testing          | Aisyah Rahmasari                  | 5027231072   |
