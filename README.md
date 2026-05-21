@@ -23,3 +23,22 @@ Sistem ini memastikan bahwa setiap pemilih hanya dapat memberikan satu suara sec
 *   **Dinamis & Bebas Hardcode:** Durasi voting ditentukan secara dinamis dalam hitungan menit saat proses *deployment*.
 *   **Voting Deadline (Batas Waktu Otomatis):** Voting otomatis tertutup secara sistem sistemis jika waktu blockchain (`block.timestamp`) telah melewati batas waktu yang ditentukan.
 *   **Fungsi Sisa Waktu:** Menyediakan fungsi eksternal (`getRemainingTime`) untuk memeriksa sisa durasi pemilihan secara transparan.
+
+## Panduan Cara Menjalankan Proyek
+### 1. Prasyarat Sistem (Prerequisites)
+Pastikan komputer Anda sudah terinstal:
+*   Node.js v22.13.0 atau versi di atasnya.
+*   npm v10.5.2 atau versi di atasnya.
+### 2. Clone Project
+```bash
+git clone https://github.com/acaaa8/blockchain-project2-team-aisya.git
+cd blockchain-project2-team-aisya
+```
+### 3. Instalasi Dependensi
+```
+npm install --legacy-peer-deps
+```
+### 4. Lakukan kompilasi file kontrak Voting.sol
+```
+npx hardhat compile
+```
