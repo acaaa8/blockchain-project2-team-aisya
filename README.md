@@ -5,16 +5,12 @@ Proyek ini adalah implementasi **Smart Contract Voting Sederhana** yang berjalan
 
 Sistem ini memastikan bahwa setiap pemilih hanya dapat memberikan satu suara secara unik menggunakan identitas dompet Web3 mereka (MetaMask) tanpa perlu menggunakan sistem database eksternal terpusat. Proyek ini dibangun menggunakan framework **Solidity** dan **Hardhat** versi 2.
 
-| Role                          | Name                              | NRP        |
+| Name                          | NRP                              | Role        |
 |-------------------------------|-----------------------------------|------------|
-| Backend & Core Blockchain     | Callista Meyra Azizah             | 5027231060 |
-| Security & Digital Signature  | Fadlillah Cantika Sari Hermawan   | 5027231042 |
-| Networking & Testing          | Aisyah Rahmasari                  | 5027231072   |
+| Fadlillah Cantika Sari Hermawan     | 5027231042             | Orang Pertama-Smart Contract Developer |
+|   |    | Orang Kedua-QA / Unit Tester |
+|           |                   |  Orang Ketiga-Deployment & Dokumentasi  |
 
-## Pembagian Tugas 
-- Orang Pertama (Smart Contract Developer) - Fadlillah Cantika Sari H
-- Orang Kedua (QA / Unit Tester) - siapa ini
-- Orang Ketiga (Deployment & Dokumentasi) - siapa ini
 
 ## Fitur Smart Contract
 ### Fitur Wajib (Mandatory):
