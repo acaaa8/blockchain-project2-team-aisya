@@ -45,10 +45,40 @@ Pastikan komputer Anda sudah terinstal:
 ```
 npm install --legacy-peer-deps
 ```
-### 4. Lakukan kompilasi file kontrak Voting.sol
-```
+### 4. Kompilasi File Kontrak Voting.sol
+Lakukan kompilasi smart contract Solidity menggunakan perintah berikut:
+```bash
 npx hardhat compile
 ```
+
+### 5. Jalankan Unit Testing & Analisis Estimasi Gas (Hasil Gambar 1 & 2)
+Untuk memproses 13 skenario kasus uji otomatis sekaligus memicu modul laporan statistik penggunaan gas:
+```bash
+npx hardhat test
+```
+
+### 6. Jalankan Uji Cakupan Kode / Test Coverage (Hasil Gambar 3 & 4)
+Untuk menghitung persentase baris kode dan percabangan keputusan (*branches*) yang tereksekusi oleh unit test:
+```bash
+npx hardhat coverage
+```
+
+### 7. Jalankan Node Jaringan Blockchain Lokal (Local Node)
+Nyalakan node simulasi blockchain lokal Hardhat pada jendela terminal pertama Anda:
+```bash
+npx hardhat node
+```
+
+### 8. Lakukan Deployment & Interaksi Programmatic (Hasil Gambar 5)
+Buka jendela terminal kedua Anda, kemudian jalankan berkas skrip deployment dan simulasi interaksi secara terprogram pada jaringan lokal tersebut:
+```bash
+# Eksekusi deployment kontrak ke localhost
+npx hardhat run scripts/deploy.js --network localhost
+
+# Eksekusi skrip interaksi programmatic (pendaftaran kandidat & voting)
+npx hardhat run scripts/interact.js --network localhost
+```
+
 
 ## Hasil Pengujian & Eksekusi Jaringan Lokal
 
