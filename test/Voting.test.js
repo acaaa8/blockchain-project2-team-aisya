@@ -100,4 +100,32 @@ describe("Voting Contract", function () {
       ).to.be.revertedWith("Voting is already closed manually");
     });
   });
+
+  describe("E. Remaining Time & Deadline", function () {
+    it("11. Fungsi getRemainingTime harus mengembalikan 0 jika voting ditutup manual", async function () {
+      await voting.connect(owner).closeVoting();
+      expect(await voting.getRemainingTime()).to.equal(0);
+    });
+
+    it("12. Gagal melakukan voting jika deadline telah terlewati", async function () {
+      await voting.addCandidate("Bob");
+      
+      // Majukan waktu di local blockchain sebanyak 21 menit (durasi voting adalah 20 menit)
+      await ethers.provider.send("evm_increaseTime", [21 * 60]);
+      await ethers.provider.send("evm_mine");
+
+      // Coba vote (harus gagal karena deadline terlewati)
+      await expect(
+        voting.connect(addr1).vote(1)
+      ).to.be.revertedWith("Voting deadline has passed!");
+    });
+
+    it("13. Fungsi getRemainingTime harus mengembalikan 0 jika deadline telah terlewati", async function () {
+      // Majukan waktu di local blockchain sebanyak 21 menit
+      await ethers.provider.send("evm_increaseTime", [21 * 60]);
+      await ethers.provider.send("evm_mine");
+
+      expect(await voting.getRemainingTime()).to.equal(0);
+    });
+  });
 });
