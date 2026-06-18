@@ -168,6 +168,26 @@ function App() {
     }
   }, [contract, account]);
 
+   // Real-time Event Listener: Mendeteksi jika ada orang lain yang vote
+  useEffect(() => {
+    if (contract) {
+      const onVoted = (candidateId) => {
+        console.log("Ada suara baru masuk untuk kandidat ID:", candidateId);
+        // Refresh data secara otomatis agar angka di UI berubah real-time
+        loadContractData(); 
+      };
+
+      // Memasang listener
+      contract.on("Voted", onVoted);
+
+      // Cleanup function: Menghapus listener saat komponen tidak digunakan
+      // Agar tidak terjadi memory leak atau listener ganda
+      return () => {
+        contract.off("Voted", onVoted);
+      };
+    }
+  }, [contract]); 
+  
   // Listen untuk perubahan account
   useEffect(() => {
     if (window.ethereum) {
