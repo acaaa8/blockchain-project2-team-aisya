@@ -167,5 +167,30 @@ Pengujian interaksi visual menggunakan antarmuka grafis Web3 terdesentralisasi b
 
 *Laporan akhir ini disusun untuk memenuhi standar kelulusan Penilaian Blockchain Modul 07 s.d. Modul 11.*
 
+### 4. Hasil Integrasi & Demo Frontend dApp via Vercel (Online GUI)
 
+Pengujian interaksi dApp secara online menggunakan antarmuka website React yang telah di-deploy ke Vercel berhasil diselesaikan dengan baik:
+
+*   **Tautan Akses Online (Vercel):** [blockchain-project2-team-aisya.vercelapp](https://blockchain-project2-team-aisya.vercel.app)
+*   **Koneksi MetaMask Online:** dApp dapat diakses secara publik dan dihubungkan ke ekstensi MetaMask menggunakan jaringan **Hardhat Localhost** atau **Sepolia Testnet** (blockchain publik).
+*   **Interaksi Real-Time (Event Listening):**
+    *   Melakukan registrasi kandidat secara visual melalui panel admin.
+    *   Melakukan voting pada kandidat pilihan menggunakan MetaMask.
+    *   Data perolehan suara kandidat ter-update secara otomatis tanpa refresh halaman berkat fungsionalitas *Real-Time Event Listener* (`contract.on("Voted")`).
+    *   Alamat dompet pemilih otomatis tercatat secara real-time ke dalam tabel **Riwayat Aktivitas Voting** di bawah halaman web.
+
+#### Screenshot Pengujian dApp via Vercel:
+`[Tempat Gambar dApp Terkoneksi & Berhasil Vote secara Real-time]`
+
+---
+
+## Contract Address & Live Link
+
+*   **Contract Address (Hardhat Deploy Script):** `0x5FbDB2315678afecb367f032d93F642f64180aa3`
+*   **Contract Address (Remix IDE Deploy):** `0xcF7156538F21855963a08b7f52c433c29b0c7a40`
+*   **Contract Address (Sepolia Testnet Deploy):** `[Akan dideploy dan diisi alamat kontrak Sepolia oleh Orang A (Callista)]`
+*   **Live dApp URL (Vercel):** `https://blockchain-project2-team-aisya.vercel.app`
+
+---
+Laporan akhir ini disusun untuk memenuhi standar kelulusan Penilaian Blockchain Modul 07 s.d. Modul 11.
 
