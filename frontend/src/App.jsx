@@ -10,6 +10,7 @@ import AdminPanel from './components/AdminPanel';
 import CandidateCard from './components/CandidateCard';
 import Toast from './components/Toast';
 import ThemeToggle from './components/ThemeToggle';
+import TransactionHistory from './components/TransactionHistory'; // Import komponen baru
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -20,6 +21,7 @@ function App() {
   const [isOwner, setIsOwner] = useState(false);
   const [loading, setLoading] = useState(false);
   const [totalVotes, setTotalVotes] = useState(0);
+  const [transactions, setTransactions] = useState([]); // State untuk riwayat transaksi
 
   // UI States
   const [toast, setToast] = useState({ message: '', type: '' });
@@ -56,7 +58,7 @@ function App() {
       
       // Deteksi Jaringan
       const network = await provider.getNetwork();
-      // Misal kita expect localhost 8545 (chain id 31337)
+      // Expect localhost 8545 (chain id 31337)
       if (network.chainId !== 31337n) {
         showToast('Peringatan: Kamu tidak berada di jaringan Localhost 8545.', 'error');
       }
@@ -125,6 +127,29 @@ function App() {
     }
   };
 
+  // Load Riwayat Transaksi dari Blockchain (Query Event logs)
+  const loadTransactionHistory = async () => {
+    if (!contract || !account) return;
+
+    try {
+      // Mengambil filter event "Voted" dari smart contract
+      const filter = contract.filters.Voted();
+      // Query events dari block awal (0) sampai block terbaru (latest)
+      const events = await contract.queryFilter(filter, 0, 'latest');
+      
+      const formattedTxs = events.map(event => ({
+        voter: event.args[0],
+        candidateId: Number(event.args[1]),
+        isCurrentUser: event.args[0].toLowerCase() === account.toLowerCase()
+      }));
+
+      // Membalik urutan agar transaksi terbaru muncul di atas
+      setTransactions(formattedTxs.reverse());
+    } catch (error) {
+      console.error('Error loading transaction history:', error);
+    }
+  };
+
   // Vote untuk kandidat
   const voteForCandidate = async (candidateId) => {
     if (!contract) return;
@@ -137,6 +162,7 @@ function App() {
 
       showToast('Vote berhasil!', 'success');
       await loadContractData();
+      await loadTransactionHistory();
     } catch (error) {
       console.error('Error voting:', error);
       showToast('Gagal vote: ' + (error.reason || error.message), 'error');
@@ -197,16 +223,39 @@ function App() {
     setContract(null);
     setIsOwner(false);
     setCandidates([]);
+    setTransactions([]);
     showToast('Wallet disconnected', 'info');
   };
 
+  // Trigger load data saat dompet dan kontrak siap
   useEffect(() => {
     if (contract && account) {
       loadContractData();
+      loadTransactionHistory();
     }
   }, [contract, account]);
 
-  // Listen untuk perubahan account
+  // Real-Time Event Listener (Bonus Poin)
+  useEffect(() => {
+    if (contract) {
+      const handleNewVote = (voter, candidateId) => {
+        console.log("Ada suara baru masuk secara real-time!");
+        loadContractData();
+        loadTransactionHistory();
+        showToast("Ada suara baru masuk secara real-time!", "success");
+      };
+
+      // Pasang listener event "Voted" dari smart contract
+      contract.on("Voted", handleNewVote);
+
+      // Bersihkan listener saat komponen tidak digunakan (unmount)
+      return () => {
+        contract.off("Voted", handleNewVote);
+      };
+    }
+  }, [contract]);
+
+  // Listen untuk perubahan account di MetaMask
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', (accounts) => {
@@ -284,6 +333,9 @@ function App() {
                 ))
               )}
             </div>
+
+            {/* INTEGRASI BONUS: Menampilkan Riwayat Transaksi Real-time */}
+            <TransactionHistory transactions={transactions} />
             
             {loading && candidates.length > 0 && (
               <div className="loading-spinner" style={{ marginTop: '30px' }}>
@@ -297,7 +349,7 @@ function App() {
 
       <footer>
         <p>Tugas Final Project - Teknologi Blockchain</p>
-        <p className="credit">Kelompok XYZ</p>
+        <p className="credit">Kelompok Team Aisya</p>
       </footer>
     </div>
   );
