@@ -4,7 +4,7 @@ async function main() {
   console.log("Mulai melakukan deployment smart contract Voting...");
 
   // Deploy dengan durasi default 20 menit
-  const durationInMinutes = 20;
+  const durationInMinutes = 60;
   const Voting = await hre.ethers.getContractFactory("Voting");
   const voting = await Voting.deploy(durationInMinutes);
 
