@@ -19,6 +19,7 @@ function App() {
   const [hasVoted, setHasVoted] = useState(false);
   const [votingOpen, setVotingOpen] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+  const [owner, setOwner] = useState(null);
   const [loading, setLoading] = useState(false);
   const [totalVotes, setTotalVotes] = useState(0);
   const [transactions, setTransactions] = useState([]); // State untuk riwayat transaksi
@@ -61,6 +62,15 @@ function App() {
       // Expect localhost 8545 (chain id 31337)
       if (network.chainId !== 31337n) {
         showToast('Peringatan: Kamu tidak berada di jaringan Localhost 8545.', 'error');
+      }
+
+      const contractCode = await provider.getCode(CONTRACT_ADDRESS);
+      if (contractCode === '0x') {
+        showToast(
+          'Kontrak tidak ditemukan di alamat ini. Pastikan deploy ke jaringan Localhost 8545 dan gunakan alamat kontrak yang benar.',
+          'error'
+        );
+        return;
       }
 
       const signer = await provider.getSigner();
@@ -123,7 +133,11 @@ function App() {
 
     } catch (error) {
       console.error('Error loading data:', error);
-      showToast('Gagal memuat data dari blockchain: ' + error.message, 'error');
+      showToast(
+        'Gagal memuat data dari blockchain. Cek alamat kontrak dan jaringan Localhost 8545. ' +
+          (error.reason || error.message),
+        'error'
+      );
     } finally {
       setLoading(false);
     }
@@ -224,6 +238,7 @@ function App() {
     setAccount(null);
     setContract(null);
     setIsOwner(false);
+    setOwner(null);
     setCandidates([]);
     setTransactions([]);
     showToast('Wallet disconnected', 'info');
@@ -297,6 +312,7 @@ function App() {
             <div className="dashboard-grid">
               <VotingInfo 
                 account={account}
+                owner={owner}
                 votingOpen={votingOpen}
                 totalVotes={totalVotes}
                 hasVoted={hasVoted}
