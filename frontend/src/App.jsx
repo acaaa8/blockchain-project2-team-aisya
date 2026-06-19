@@ -75,7 +75,9 @@ function App() {
       showToast('Wallet berhasil terkoneksi!', 'success');
 
       try {
+        console.log("Mencoba membaca dari address:", CONTRACT_ADDRESS);
         const owner = await votingContract.owner();
+        console.log("Ownernya adalah:", owner);
         setIsOwner(owner.toLowerCase() === accounts[0].toLowerCase());
       } catch (err) {
         console.error("Gagal membaca owner", err);
@@ -121,7 +123,7 @@ function App() {
 
     } catch (error) {
       console.error('Error loading data:', error);
-      showToast('Gagal memuat data dari blockchain', 'error');
+      showToast('Gagal memuat data dari blockchain: ' + error.message, 'error');
     } finally {
       setLoading(false);
     }
