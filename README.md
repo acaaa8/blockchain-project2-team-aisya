@@ -180,17 +180,18 @@ Pengujian interaksi dApp secara online menggunakan antarmuka website React yang 
     *   Alamat dompet pemilih otomatis tercatat secara real-time ke dalam tabel **Riwayat Aktivitas Voting** di bawah halaman web.
 
 #### Screenshot Pengujian dApp via Vercel:
-`[Tempat Gambar dApp Terkoneksi & Berhasil Vote secara Real-time]`
-
+<img width="827" height="464" alt="image" src="https://github.com/user-attachments/assets/e3fafad9-e286-4f00-8bf4-5d4687a9b107" />
 ---
 
 ## Contract Address & Live Link
 
 *   **Contract Address (Hardhat Deploy Script):** `0x5FbDB2315678afecb367f032d93F642f64180aa3`
 *   **Contract Address (Remix IDE Deploy):** `0xcF7156538F21855963a08b7f52c433c29b0c7a40`
-*   **Contract Address (Sepolia Testnet Deploy):** `[Akan dideploy dan diisi alamat kontrak Sepolia oleh Orang A (Callista)]`
+*   **Contract Address (Sepolia Testnet Deploy):** `[alamat kontrak Callista]`
 *   **Live dApp URL (Vercel):** `https://blockchain-project2-team-aisya.vercel.app`
+<img width="827" height="471" alt="image" src="https://github.com/user-attachments/assets/12495e0c-aa79-4478-8042-5cdab4473c17" />
+<img width="829" height="464" alt="image" src="https://github.com/user-attachments/assets/1ff35b92-166c-4b34-b0fd-bae3810f58c4" />
+<img width="824" height="465" alt="image" src="https://github.com/user-attachments/assets/dccc64c7-3d1b-4d90-a530-d7241240ae25" />
+<img width="825" height="464" alt="image" src="https://github.com/user-attachments/assets/2471ef14-3309-47b7-b2b1-abbdba2ed22e" />
 
----
-Laporan akhir ini disusun untuk memenuhi standar kelulusan Penilaian Blockchain Modul 07 s.d. Modul 11.
 
