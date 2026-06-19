@@ -21,6 +21,13 @@ console.log("------------------------------");
 module.exports = {
   solidity: "0.8.20",
   networks: {
+    hardhat: {
+      chainId: 1337
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545",
+      chainId: 1337
+    },
     sepolia: {
       url: SEPOLIA_URL,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
