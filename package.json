@@ -21,6 +21,7 @@
     "@typechain/hardhat": "^9.1.0",
     "autoprefixer": "^10.5.0",
     "chai": "^4.5.0",
+    "dotenv": "^17.4.2",
     "ethers": "^6.16.0",
     "hardhat": "^2.22.17",
     "hardhat-gas-reporter": "^2.3.0",
@@ -28,8 +29,5 @@
     "solidity-coverage": "^0.8.17",
     "tailwindcss": "^4.3.1",
     "typechain": "^8.3.2"
-  },
-  "dependencies": {
-    "dotenv": "^17.4.2"
   }
 }
